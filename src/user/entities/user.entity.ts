@@ -5,8 +5,8 @@ import {
 	Column,
 	CreateDateColumn,
 	UpdateDateColumn,
-	OneToOne
-} from 'typeorm'
+	OneToOne, JoinColumn, OneToMany,
+} from 'typeorm';
 
 @Entity('user')
 export class UserEntity {
@@ -34,6 +34,7 @@ export class UserEntity {
 	@UpdateDateColumn()
 	updatedAt: Date
 
-	@OneToOne(() => OrderEntity, order => order.user, { eager: true })
+	@JoinColumn()
+	@OneToMany(() => OrderEntity, order => order.user, { eager: true })
 	orders: OrderEntity[]
 }

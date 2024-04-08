@@ -26,11 +26,11 @@ export class OrderController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post()
-  changeStatus(@Request() req, @Body() orderId: string) {
+  @Post('/change-status')
+  changeStatus(@Request() req, @Body() body) {
     const userEmail = req.user.email
-
-    return this.orderService.changeStatus(orderId, userEmail);
+    console.log("body", body.orderId);
+    return this.orderService.changeStatus(body.orderId.toString(), userEmail);
   }
 
   @Patch(':id')

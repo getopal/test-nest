@@ -1,5 +1,5 @@
 import { UserEntity } from "src/user/entities/user.entity";
-import { Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class OrderEntity {
     @PrimaryGeneratedColumn()
@@ -29,6 +29,7 @@ export class OrderEntity {
     @CreateDateColumn()
     createdAt: Date
 
-    @OneToOne(() => UserEntity, users => users.orders)
-	user: UserEntity[]
+    @JoinColumn()
+    @ManyToMany(() => UserEntity, users => users.orders)
+	  user: UserEntity[]
 }
