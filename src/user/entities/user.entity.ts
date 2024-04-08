@@ -1,10 +1,11 @@
+import { OrderEntity } from 'src/order/entities/order.entity'
 import {
 	Entity,
 	PrimaryGeneratedColumn,
 	Column,
 	CreateDateColumn,
 	UpdateDateColumn,
-
+	OneToOne
 } from 'typeorm'
 
 @Entity('user')
@@ -32,4 +33,7 @@ export class UserEntity {
 
 	@UpdateDateColumn()
 	updatedAt: Date
+
+	@OneToOne(() => OrderEntity, order => order.user, { eager: true })
+	orders: OrderEntity[]
 }
