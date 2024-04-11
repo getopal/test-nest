@@ -29,7 +29,4 @@ export class OrderEntity {
     @CreateDateColumn()
     createdAt: Date
 
-    @JoinColumn()
-    @ManyToMany(() => UserEntity, users => users.orders)
-	  user: UserEntity[]
 }

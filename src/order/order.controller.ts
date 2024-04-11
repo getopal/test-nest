@@ -4,6 +4,7 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard'
+import { log } from 'console';
 
 @ApiTags('order')
 @Controller('order')
@@ -12,6 +13,7 @@ export class OrderController {
 
   @Post()
   create(@Body() createOrderDto: CreateOrderDto) {
+    console.log(createOrderDto);
     return this.orderService.create(createOrderDto);
   }
 

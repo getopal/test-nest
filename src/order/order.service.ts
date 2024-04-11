@@ -48,24 +48,24 @@ export class OrderService {
   }
 
   async changeStatus(id: string, userEmail: string) {
-    const order = await this.repository.findOne({where: {id}})
-    const user = await this.userRepository.findOne({ where: { email: userEmail } })
-
-
-    order.active = true
-
-
-    if (!order) {
-			throw new Error('Order not found')
-		}
-
-    await this.userRepository
-          .createQueryBuilder()
-          .relation(UserEntity, 'orders')
-          .of(user)
-          .add(order)
-
-    return await this.repository.save(order)
-
+    // const order = await this.repository.findOne({where: {id}})
+    // const user = await this.userRepository.findOne({ where: { email: userEmail } })
+    //
+    //
+    // order.active = true
+    //
+    //
+    // if (!order) {
+		// 	throw new Error('Order not found')
+		// }
+    //
+    // await this.userRepository
+    //       .createQueryBuilder()
+    //       .relation(UserEntity, 'orders')
+    //       .of(user)
+    //       .add(order)
+    //
+    // return await this.repository.save(order)
+    return 'work'
   }
 }

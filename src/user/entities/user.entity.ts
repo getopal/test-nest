@@ -34,7 +34,4 @@ export class UserEntity {
 	@UpdateDateColumn()
 	updatedAt: Date
 
-	@JoinColumn()
-	@OneToMany(() => OrderEntity, order => order.user, { eager: true })
-	orders: OrderEntity[]
 }
